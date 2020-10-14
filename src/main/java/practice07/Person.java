@@ -18,7 +18,7 @@ public class Person {
     }
 
     public String introduce(){
-        return  "My name is Tom. I am 21 years old.";
+        return new StringBuilder().append("My name is ").append(this.name).append(". I am ").append(this.getAge()).append(" years old.").toString();
     }
 
 }

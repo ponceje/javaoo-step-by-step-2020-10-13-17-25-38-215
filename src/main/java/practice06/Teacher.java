@@ -18,9 +18,11 @@ public class Teacher extends Person{
     public String introduce(){
 
         if(klass == 0){
-            return "My name is Tom. I am 21 years old. I am a Teacher. I teach No Class.";
+            return new StringBuilder().append(super.introduce())
+                    .append(" I am a Teacher. I teach No Class.").toString();
         }else{
-            return  "My name is Tom. I am 21 years old. I am a Teacher. I teach Class 2.";
+            return new StringBuilder().append(super.introduce())
+                    .append(" I am a Teacher. I teach Class ").append(this.klass).append(".").toString();
         }
 
     }

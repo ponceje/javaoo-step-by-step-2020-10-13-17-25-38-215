@@ -7,6 +7,7 @@ public class Worker extends Person {
     }
 
     public String introduce(){
-        return  "My name is Tom. I am 21 years old. I am a Worker. I have a job.";
+        return new StringBuilder().append(super.introduce())
+                .append(" I am a Worker. I have a job.").toString();
     }
 }
