@@ -15,15 +15,15 @@ public class Student extends Person {
     public String introduce(){ //need to find way
         if(this.klass.getLeader() == null){
             return new StringBuilder().append(super.introduce())
-                    .append(" I am a Student. I am at Class ").append(this.klass.getNumber()).append(".").toString();
+                    .append(" I am a Student. I am at ").append(this.klass.getDisplayName()).append(".").toString();
         }else{
             if (this.klass.getLeader().getId() == this.getId()){
                 return new StringBuilder().append(super.introduce())
-                        .append(" I am a Student. I am Leader of Class ").append(this.klass.getNumber()).append(".").toString();
+                        .append(" I am a Student. I am Leader of ").append(this.klass.getDisplayName()).append(".").toString();
             }
             else{
                 return new StringBuilder().append(super.introduce())
-                        .append(" I am a Student. I am at Class ").append(this.klass.getNumber()).append(".").toString();
+                        .append(" I am a Student. I am at ").append(this.klass.getDisplayName()).append(".").toString();
             }
         }
     }

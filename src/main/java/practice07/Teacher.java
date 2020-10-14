@@ -22,7 +22,7 @@ public class Teacher extends Person {
                     .append(" I am a Teacher. I teach No Class.").toString();
         }else{
             return new StringBuilder().append(super.introduce())
-                    .append(" I am a Teacher. I teach Class ").append(this.klass.getNumber()).append(".").toString();
+                    .append(" I am a Teacher. I teach ").append(this.klass.getDisplayName()).append(".").toString();
         }
 
     }
