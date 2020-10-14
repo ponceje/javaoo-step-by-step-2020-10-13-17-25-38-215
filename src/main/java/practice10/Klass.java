@@ -24,7 +24,7 @@ public class Klass {
 
     public void assignLeader(Student student){
 
-        if (member.stream().anyMatch(studentInList -> Objects.equals(studentInList, student))){
+        if (this.number == student.getKlass().number){
             this.leader = student;
         }else{
             System.out.print("It is not one of us.\n");
