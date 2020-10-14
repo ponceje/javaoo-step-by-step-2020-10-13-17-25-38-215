@@ -26,24 +26,6 @@ public class Teacher extends Person {
 
     public String introduce(){
 
-        if(klasses == null){
-            return introduceKlass();
-        }else{
-            return introduceKlasses();
-        }
-
-    }
-
-    public String introduceKlass(){
-        if(this.klass == null){
-            return new StringBuilder().append(super.introduce())
-                    .append(" I am a Teacher. I teach No Class.").toString();
-        }else{
-            return new StringBuilder().append(super.introduce())
-                    .append(" I am a Teacher. I teach Class ").append(this.klass.getNumber()).append(".").toString();
-        }
-    }
-    public String introduceKlasses(){
         List<Integer> klassListInt = new ArrayList<>();
         for(Klass klassList: klasses){
             klassListInt.add(klassList.getNumber());
@@ -58,6 +40,7 @@ public class Teacher extends Person {
             return new StringBuilder().append(super.introduce())
                     .append(" I am a Teacher. I teach Class ").append(klassListStr).append(".").toString();
         }
+
     }
 
     public String introduceWith(Student student){
@@ -72,28 +55,11 @@ public class Teacher extends Person {
 
     public List<Klass> getClasses(){ return klasses; }
 
-    public boolean isTeaching(Student student){
-        if(klasses == null){
-            if(this.klass == null){
-                return false;
-            }else{
-                if (this.klass.getNumber() == student.getKlass().getNumber()){
-                    return true;
-                }else{
-                    return  false;
-                }
-            }
-        }else{
-            if(this.klasses.size()==0){
-                return false;
-            }else{
-                if(this.klasses.stream().anyMatch(t -> t.getNumber()==student.getKlass().getNumber())){
-                    return true;
-                }else {
-                    return false;
-                }
-            }
+    public boolean isTeaching(Student student) {
+        if (this.klasses.stream().anyMatch(t -> t.getNumber() == student.getKlass().getNumber())) {
+            return true;
+        } else {
+            return false;
         }
     }
-
 }
