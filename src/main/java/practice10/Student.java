@@ -13,7 +13,7 @@ public class Student extends Person {
     }
 
     public String introduce(){ //need to find way
-        if(this.klass.getLeader() == null){
+        if(this.klass.getLeader() == null){//!null
             return new StringBuilder().append(super.introduce())
                     .append(" I am a Student. I am at Class ").append(this.klass.getNumber()).append(".").toString();
         }else{

@@ -17,7 +17,7 @@ public class Teacher extends Person {
     }
 
     public String introduce(){
-
+        //optional
         if(this.klass == null){
             return new StringBuilder().append(super.introduce())
                     .append(" I am a Teacher. I teach No Class.").toString();
@@ -29,7 +29,7 @@ public class Teacher extends Person {
     }
 
     public String introduceWith(Student student){
-
+        //optional
         if(this.klass.getNumber()==student.getKlass().getNumber()){
             return new StringBuilder().append(super.introduce())
                     .append(" I am a Teacher. I teach ").append(student.getName()).append(".").toString();

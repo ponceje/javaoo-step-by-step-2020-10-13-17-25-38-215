@@ -1,6 +1,9 @@
 package practice07;
 
 public class Person {
+    public static final String MY_NAME_IS = "My name is ";
+    public static final String I_AM = ". I am ";
+    public static final String YEARS_OLD = " years old.";
     private String name;
     private int age;
 
@@ -18,7 +21,7 @@ public class Person {
     }
 
     public String introduce(){
-        return new StringBuilder().append("My name is ").append(this.name).append(". I am ").append(this.getAge()).append(" years old.").toString();
+        return new StringBuilder().append(MY_NAME_IS).append(this.name).append(I_AM).append(this.getAge()).append(YEARS_OLD).toString();
     }
 
 }

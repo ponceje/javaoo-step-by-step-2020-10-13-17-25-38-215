@@ -8,6 +8,7 @@ import java.io.PrintStream;
 import java.util.LinkedList;
 
 import static org.fest.assertions.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 
 public class Practice11Test {
     private Klass klass2;
@@ -183,7 +184,6 @@ public class Practice11Test {
 
         klass2.appendMember(jerry);
         klass2.assignLeader(jerry);
-
         assertThat(systemOut().endsWith("I am Tom. I know Jerry become Leader of Class 2.\n")).isTrue();
     }
 }

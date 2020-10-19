@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Teacher extends Person {
+    public static final String I_AM_A_TEACHER_I_TEACH_NO_CLASS = " I am a Teacher. I teach No Class.";
+    public static final String I_AM_A_TEACHER_I_TEACH_CLASS = " I am a Teacher. I teach Class ";
     private Klass klass;
     private List<Klass> klasses = new ArrayList<>();
 
@@ -26,19 +28,16 @@ public class Teacher extends Person {
 
     public String introduce(){
 
-        List<Integer> klassListInt = new ArrayList<>();
-        for(Klass klassList: klasses){
-            klassListInt.add(klassList.getNumber());
-        }
-        String klassListStr = klassListInt.stream()
-                .map(Object::toString)
+        String klassListStr = klasses.stream()
+                .map(klassList -> String.valueOf(klass.getNumber()))
                 .collect(Collectors.joining(", "));
+
         if(this.klasses.size()==0){
             return new StringBuilder().append(super.introduce())
-                    .append(" I am a Teacher. I teach No Class.").toString();
+                    .append(I_AM_A_TEACHER_I_TEACH_NO_CLASS).toString();
         }else{
             return new StringBuilder().append(super.introduce())
-                    .append(" I am a Teacher. I teach Class ").append(klassListStr).append(".").toString();
+                    .append(I_AM_A_TEACHER_I_TEACH_CLASS).append(klassListStr).append(".").toString();
         }
 
     }

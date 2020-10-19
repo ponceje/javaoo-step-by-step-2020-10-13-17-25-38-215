@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Teacher extends Person {
+public class Teacher extends Person implements JoinListener, JoinLeaderListener{
     private Klass klass;
     private List<Klass> klasses = new ArrayList<>();
 
@@ -18,6 +18,7 @@ public class Teacher extends Person {
     public Teacher(int id, String name, int age, List<Klass> klasses) {
         super(id, name, age);
         this.klasses = klasses;
+        klasses.forEach(klass1 -> klass1.addTeacherList(this));
     }
 
     public Klass getKlass() {
@@ -96,8 +97,13 @@ public class Teacher extends Person {
         }
     }
 
-    public void notifyMember(Student student){
-
+    @Override
+    public void notifyAssignLeader(Student student, Klass klass) {
+        System.out.print(String.format("I am Tom. I know %s become Leader of %s.\n",student.getName(),klass.getDisplayName()));
     }
 
+    @Override
+    public void notifyJoin(Student student, Klass klass) {
+        System.out.print(String.format("I am Tom. I know %s has joined %s.\n",student.getName(),klass.getDisplayName()));
+    }
 }
