@@ -27,7 +27,7 @@ public class Klass {
     public void assignLeader(Student student) {
         if (this.member.contains(student)) {
             this.leader = student;
-            this.observers.forEach(observer -> observer.notifyAssignLeader(student,this));
+            this.observers.forEach(observer -> observer.notifyAssignLeader(student, this));
         } else {
             System.out.print("It is not one of us.\n");
         }
@@ -39,9 +39,9 @@ public class Klass {
 
     public void appendMember(Student student) {
         this.member.add(student);
-        this.observers.forEach(observer -> observer.notifyJoin(student,this));
+        student.addKlass(this);
+        this.observers.forEach(observer -> observer.notifyJoin(student, this));
     }
-
 
     public void addObserver(Observer observer) {
         this.observers.add(observer);
