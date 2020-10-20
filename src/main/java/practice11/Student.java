@@ -1,7 +1,9 @@
 package practice11;
 
+import java.util.Objects;
+
 public class Student extends Person {
-    private Klass klass;
+    private final Klass klass;
 
     public Student(int id, String name, int age, Klass klass) {
         super(id, name, age);
@@ -12,20 +14,26 @@ public class Student extends Person {
         return klass;
     }
 
-    public String introduce(){ //need to find way
-        if(this.klass.getLeader() == null){
-            return new StringBuilder().append(super.introduce())
-                    .append(" I am a Student. I am at Class ").append(this.klass.getNumber()).append(".").toString();
-        }else{
-            if (this.klass.getLeader().getId() == this.getId()){
-                return new StringBuilder().append(super.introduce())
-                        .append(" I am a Student. I am Leader of Class ").append(this.klass.getNumber()).append(".").toString();
-            }
-            else{
-                return new StringBuilder().append(super.introduce())
-                        .append(" I am a Student. I am at Class ").append(this.klass.getNumber()).append(".").toString();
-            }
+    @Override
+    public String introduce() {
+        if (this.klass.getLeader() == null) {
+            return String.format("%s I am a Student. I am at Class %d.", super.introduce(), this.klass.getNumber());
+        } else {
+            return String.format("%s I am a Student. I am Leader of Class %d.", super.introduce(), this.klass.getNumber());
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Student student = (Student) o;
+        return Objects.equals(klass, student.klass);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), klass);
+    }
 }

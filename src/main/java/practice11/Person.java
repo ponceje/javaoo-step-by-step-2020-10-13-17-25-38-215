@@ -3,9 +3,9 @@ package practice11;
 import java.util.Objects;
 
 public class Person {
-    private String name;
-    private int age;
-    private int id;
+    private final String name;
+    private final int age;
+    private final int id;
 
     public Person(int id, String name, int age) {
         this.name = name;
@@ -22,11 +22,7 @@ public class Person {
     }
 
     public String introduce(){
-        return new StringBuilder().append("My name is ").append(this.name).append(". I am ").append(this.getAge()).append(" years old.").toString();
-    }
-
-    public int getId() {
-        return id;
+        return String.format("My name is %s. I am %d years old.", this.name, this.getAge());
     }
 
     @Override

@@ -1,15 +1,16 @@
 package practice11;
 
+import practice11.listener.Observer;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class Klass {
 
-    private int number;
+    private final int number;
     private Student leader;
-    private List<Student> member = new ArrayList<>();
-    private List<Teacher> teacherList = new ArrayList<>();
+    private final List<Student> member = new ArrayList<>();
+    private final List<practice11.listener.Observer> observers = new ArrayList<>();
 
     public Klass(int number) {
         this.number = number;
@@ -19,31 +20,30 @@ public class Klass {
         return number;
     }
 
-    public String getDisplayName(){
+    public String getDisplayName() {
         return "Class " + this.number;
     }
 
-    public void assignLeader(Student student){
-
-        if (this.member.contains(student)){
+    public void assignLeader(Student student) {
+        if (this.member.contains(student)) {
             this.leader = student;
-            this.teacherList.forEach(teacher -> teacher.notifyAssignLeader(student, this));
-        }else{
+            this.observers.forEach(observer -> observer.notifyAssignLeader(student,this));
+        } else {
             System.out.print("It is not one of us.\n");
         }
-
     }
 
-    public Student getLeader(){ return leader; }
+    public Student getLeader() {
+        return leader;
+    }
 
-    public void appendMember(Student student){
+    public void appendMember(Student student) {
         this.member.add(student);
-        this.teacherList.forEach(teacher -> teacher.notifyJoin(student,this));
+        this.observers.forEach(observer -> observer.notifyJoin(student,this));
     }
 
-    public List<Student> getMember(){ return member;}
 
-    public void addTeacherList(Teacher teacher) {
-        this.teacherList.add(teacher);
+    public void addObserver(Observer observer) {
+        this.observers.add(observer);
     }
 }
